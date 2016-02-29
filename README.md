@@ -1,0 +1,1 @@
+# identity-tool-samlsso-validator
