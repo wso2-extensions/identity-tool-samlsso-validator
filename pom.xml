@@ -47,6 +47,31 @@
                 <artifactId>opensaml</artifactId>
                 <version>${opensaml2.wso2.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.identity</groupId>
+                <artifactId>org.wso2.carbon.identity.sso.saml</artifactId>
+                <version>${identity.sso.saml}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.identity</groupId>
+                <artifactId>org.wso2.carbon.identity.authenticator.saml2.sso.common</artifactId>
+                <version>${identity.authenticator.saml2.sso.common}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.identity</groupId>
+                <artifactId>org.wso2.carbon.identity.tools.saml.validator.stub</artifactId>
+                <version>${identity.tools.saml.validator.stub}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.identity</groupId>
+                <artifactId>org.wso2.carbon.identity.tools.saml.validator.ui</artifactId>
+                <version>${identity.tools.saml.validator.ui}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wso2.carbon.identity</groupId>
+                <artifactId>org.wso2.carbon.identity.tools.saml.validator</artifactId>
+                <version>${identity.tools.saml.validator}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -137,6 +162,11 @@
         <opensaml2.wso2.version>2.6.4.wso2v2</opensaml2.wso2.version>
         <opensaml2.wso2.osgi.version.range>[2.6.0,3.0.0)</opensaml2.wso2.osgi.version.range>
         <inbound.auth.saml.version>5.0.9-SNAPSHOT</inbound.auth.saml.version>
+        <identity.sso.saml>5.0.9-SNAPSHOT</identity.sso.saml>
+        <identity.authenticator.saml2.sso.common>5.0.9-SNAPSHOT</identity.authenticator.saml2.sso.common>
+        <identity.tools.saml.validator.stub>5.0.9-SNAPSHOT</identity.tools.saml.validator.stub>
+        <identity.tools.saml.validator.ui>5.0.9-SNAPSHOT</identity.tools.saml.validator.ui>
+        <identity.tools.saml.validator>5.0.9-SNAPSHOT</identity.tools.saml.validator>
     </properties>
 
 </project>
