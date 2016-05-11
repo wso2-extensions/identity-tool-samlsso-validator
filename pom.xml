@@ -21,11 +21,12 @@
     <parent>
         <groupId>org.wso2.carbon.identity</groupId>
         <artifactId>identity-extension-parent</artifactId>
-        <version>5.0.9-SNAPSHOT</version>
+        <version>5.1.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>identity-tool-samlsso-validator</artifactId>
+    <version>5.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>WSO2 Carbon - Saml SSO validator Aggregator Module</name>
     <description>
@@ -161,8 +162,8 @@
     <properties>
         <opensaml2.wso2.version>2.6.4.wso2v2</opensaml2.wso2.version>
         <opensaml2.wso2.osgi.version.range>[2.6.0,3.0.0)</opensaml2.wso2.osgi.version.range>
-        <inbound.auth.saml.version>5.0.9-SNAPSHOT</inbound.auth.saml.version>
-        <carbon.auth.saml2.version>5.0.9-SNAPSHOT</carbon.auth.saml2.version>
+        <inbound.auth.saml.version>5.1.0</inbound.auth.saml.version>
+        <carbon.auth.saml2.version>5.1.0</carbon.auth.saml2.version>
     </properties>
 
 </project>
