@@ -43,11 +43,6 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.wso2.carbon.identity</groupId>
-                <artifactId>org.wso2.carbon.identity.provider</artifactId>
-                <version>${inbount.auth.openid.version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.wso2.orbit.org.opensaml</groupId>
                 <artifactId>opensaml</artifactId>
                 <version>${opensaml2.wso2.version}</version>
@@ -139,7 +134,6 @@
     </modules>
 
     <properties>
-        <inbount.auth.openid.version>5.0.9-SNAPSHOT</inbount.auth.openid.version>
         <opensaml2.wso2.version>2.6.4.wso2v2</opensaml2.wso2.version>
         <opensaml2.wso2.osgi.version.range>[2.6.0,3.0.0)</opensaml2.wso2.osgi.version.range>
         <inbound.auth.saml.version>5.0.9-SNAPSHOT</inbound.auth.saml.version>
