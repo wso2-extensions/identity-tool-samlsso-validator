@@ -62,6 +62,10 @@
             <artifactId>opensaml</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.wso2.orbit.joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.wso2.carbon</groupId>
             <artifactId>org.wso2.carbon.logging</artifactId>
         </dependency>
@@ -92,7 +96,7 @@
                             javax.xml.namespace,
                             javax.security.auth.x500,
 
-                            org.joda.time;version="${opensaml2.wso2.osgi.version.range}",
+                            org.joda.time;version="${joda.wso2.osgi.version.range}",
                             org.opensaml.*; version="${opensaml2.wso2.osgi.version.range}",
 
                             org.apache.commons.logging; version="${commons-logging.osgi.version.range}",
