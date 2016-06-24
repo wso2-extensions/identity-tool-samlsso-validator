@@ -49,6 +49,11 @@
                 <version>${opensaml2.wso2.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.wso2.orbit.joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda.wso2.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.wso2.carbon.identity</groupId>
                 <artifactId>org.wso2.carbon.identity.sso.saml</artifactId>
                 <version>${inbound.auth.saml.version}</version>
@@ -160,10 +165,13 @@
     </modules>
 
     <properties>
-        <opensaml2.wso2.version>2.6.4.wso2v2</opensaml2.wso2.version>
+        <opensaml2.wso2.version>2.6.4.wso2v3</opensaml2.wso2.version>
         <opensaml2.wso2.osgi.version.range>[2.6.0,3.0.0)</opensaml2.wso2.osgi.version.range>
         <inbound.auth.saml.version>5.1.0</inbound.auth.saml.version>
         <carbon.auth.saml2.version>5.1.0</carbon.auth.saml2.version>
+        <joda.version>2.8.2</joda.version>
+        <joda.wso2.version>2.8.2.wso2v1</joda.wso2.version>
+        <joda.wso2.osgi.version.range>[2.8.2,3.0.0)</joda.wso2.osgi.version.range>
     </properties>
 
 </project>
