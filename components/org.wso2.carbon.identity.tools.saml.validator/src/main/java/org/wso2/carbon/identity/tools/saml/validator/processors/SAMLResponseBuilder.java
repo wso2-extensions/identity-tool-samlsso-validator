@@ -68,7 +68,6 @@ import org.wso2.carbon.identity.sso.saml.util.SAMLSSOUtil;
 import org.wso2.carbon.identity.tools.saml.validator.util.SAMLValidatorUtil;
 import org.wso2.carbon.utils.multitenancy.MultitenantUtils;
 
-import java.util.Iterator;
 import java.util.Map;
 
 public class SAMLResponseBuilder {
@@ -99,7 +98,7 @@ public class SAMLResponseBuilder {
         DateTime notOnOrAfter =
                 new DateTime(issueInstant.getMillis() +
                         SAMLSSOUtil.getSAMLResponseValidityPeriod() * 60 *
-                                1000);
+                                1000L);
         response.setIssueInstant(issueInstant);
         Assertion assertion = buildSAMLAssertion(ssoIdPConfigs, notOnOrAfter, userName);
         if (ssoIdPConfigs.isDoEnableEncryptedAssertion()) {
@@ -273,11 +272,10 @@ public class SAMLResponseBuilder {
         AttributeStatement attStmt = null;
         if (claims != null) {
             attStmt = new AttributeStatementBuilder().buildObject();
-            Iterator<String> ite = claims.keySet().iterator();
 
-            for (int i = 0; i < claims.size(); i++) {
+            for (Map.Entry<String, String> claimEntry : claims.entrySet()) {
                 Attribute attrib = new AttributeBuilder().buildObject();
-                String claimUri = ite.next();
+                String claimUri = claimEntry.getKey();
                 attrib.setName(claimUri);
                 // look
                 // https://wiki.shibboleth.net/confluence/display/OpenSAML/OSTwoUsrManJavaAnyTypes
@@ -287,7 +285,7 @@ public class SAMLResponseBuilder {
                 XSString stringValue =
                         stringBuilder.buildObject(AttributeValue.DEFAULT_ELEMENT_NAME,
                                 XSString.TYPE_NAME);
-                stringValue.setValue(claims.get(claimUri));
+                stringValue.setValue(claimEntry.getValue());
                 attrib.getAttributeValues().add(stringValue);
                 attStmt.getAttributes().add(attrib);
             }
