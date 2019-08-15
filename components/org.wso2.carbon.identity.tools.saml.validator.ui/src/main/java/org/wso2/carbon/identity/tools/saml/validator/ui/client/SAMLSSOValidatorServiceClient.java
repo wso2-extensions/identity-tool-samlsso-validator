@@ -14,7 +14,7 @@ import java.rmi.RemoteException;
 
 public class SAMLSSOValidatorServiceClient {
 
-    private static Log log = LogFactory.getLog(SAMLSSOValidatorServiceClient.class);
+    private static final Log log = LogFactory.getLog(SAMLSSOValidatorServiceClient.class);
 
     private IdentitySAMLValidatorServiceStub stub;
 

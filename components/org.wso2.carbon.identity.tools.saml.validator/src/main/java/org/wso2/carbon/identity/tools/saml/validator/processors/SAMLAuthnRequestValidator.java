@@ -39,7 +39,7 @@ import java.util.List;
 
 public class SAMLAuthnRequestValidator {
 
-    private static Log log = LogFactory.getLog(SAMLAuthnRequestValidator.class);
+    private static final Log log = LogFactory.getLog(SAMLAuthnRequestValidator.class);
     private AuthnRequest authnRequest;
     private boolean isPost = false;
     private String queryString = null;

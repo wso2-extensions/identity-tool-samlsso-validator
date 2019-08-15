@@ -37,7 +37,7 @@ import java.util.List;
 
 public class SAMLValidatorService {
 
-    private static Log log = LogFactory.getLog(SAMLValidatorService.class);
+    private static final Log log = LogFactory.getLog(SAMLValidatorService.class);
 
     public ValidatedItemDTO[] validateAuthnRequest(String samlRequest, boolean isPost) {
         List<ValidatedItemDTO> validatedItems = new ArrayList<ValidatedItemDTO>();
