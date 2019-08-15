@@ -39,7 +39,7 @@ import java.util.Map;
 
 public class SAMLValidatorUtil {
 
-    private static Log log = LogFactory.getLog(SAMLValidatorUtil.class);
+    private static final Log log = LogFactory.getLog(SAMLValidatorUtil.class);
 
     /**
      * Get all SAML Issuers from configurations

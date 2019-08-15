@@ -72,7 +72,7 @@ import java.util.Map;
 
 public class SAMLResponseBuilder {
 
-    private static Log log = LogFactory.getLog(SAMLResponseBuilder.class);
+    private static final Log log = LogFactory.getLog(SAMLResponseBuilder.class);
 
     /**
      * Build SAML response using IdP configuration & user name
