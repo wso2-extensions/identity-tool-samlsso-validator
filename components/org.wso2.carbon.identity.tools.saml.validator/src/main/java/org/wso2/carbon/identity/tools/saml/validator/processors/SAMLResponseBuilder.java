@@ -19,47 +19,47 @@ package org.wso2.carbon.identity.tools.saml.validator.processors;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.joda.time.DateTime;
-import org.opensaml.Configuration;
-import org.opensaml.common.SAMLVersion;
-import org.opensaml.saml1.core.NameIdentifier;
-import org.opensaml.saml2.core.Assertion;
-import org.opensaml.saml2.core.Attribute;
-import org.opensaml.saml2.core.AttributeStatement;
-import org.opensaml.saml2.core.AttributeValue;
-import org.opensaml.saml2.core.Audience;
-import org.opensaml.saml2.core.AudienceRestriction;
-import org.opensaml.saml2.core.AuthnContext;
-import org.opensaml.saml2.core.AuthnContextClassRef;
-import org.opensaml.saml2.core.AuthnStatement;
-import org.opensaml.saml2.core.Conditions;
-import org.opensaml.saml2.core.EncryptedAssertion;
-import org.opensaml.saml2.core.NameID;
-import org.opensaml.saml2.core.Response;
-import org.opensaml.saml2.core.Status;
-import org.opensaml.saml2.core.StatusCode;
-import org.opensaml.saml2.core.StatusMessage;
-import org.opensaml.saml2.core.Subject;
-import org.opensaml.saml2.core.SubjectConfirmation;
-import org.opensaml.saml2.core.SubjectConfirmationData;
-import org.opensaml.saml2.core.impl.AssertionBuilder;
-import org.opensaml.saml2.core.impl.AttributeBuilder;
-import org.opensaml.saml2.core.impl.AttributeStatementBuilder;
-import org.opensaml.saml2.core.impl.AudienceBuilder;
-import org.opensaml.saml2.core.impl.AudienceRestrictionBuilder;
-import org.opensaml.saml2.core.impl.AuthnContextBuilder;
-import org.opensaml.saml2.core.impl.AuthnContextClassRefBuilder;
-import org.opensaml.saml2.core.impl.AuthnStatementBuilder;
-import org.opensaml.saml2.core.impl.ConditionsBuilder;
-import org.opensaml.saml2.core.impl.NameIDBuilder;
-import org.opensaml.saml2.core.impl.StatusBuilder;
-import org.opensaml.saml2.core.impl.StatusCodeBuilder;
-import org.opensaml.saml2.core.impl.StatusMessageBuilder;
-import org.opensaml.saml2.core.impl.SubjectBuilder;
-import org.opensaml.saml2.core.impl.SubjectConfirmationBuilder;
-import org.opensaml.saml2.core.impl.SubjectConfirmationDataBuilder;
-import org.opensaml.xml.encryption.EncryptionConstants;
-import org.opensaml.xml.schema.XSString;
-import org.opensaml.xml.schema.impl.XSStringBuilder;
+import org.opensaml.core.xml.config.XMLObjectProviderRegistrySupport;
+import org.opensaml.saml.common.SAMLVersion;
+import org.opensaml.saml.saml1.core.NameIdentifier;
+import org.opensaml.saml.saml2.core.Assertion;
+import org.opensaml.saml.saml2.core.Attribute;
+import org.opensaml.saml.saml2.core.AttributeStatement;
+import org.opensaml.saml.saml2.core.AttributeValue;
+import org.opensaml.saml.saml2.core.Audience;
+import org.opensaml.saml.saml2.core.AudienceRestriction;
+import org.opensaml.saml.saml2.core.AuthnContext;
+import org.opensaml.saml.saml2.core.AuthnContextClassRef;
+import org.opensaml.saml.saml2.core.AuthnStatement;
+import org.opensaml.saml.saml2.core.Conditions;
+import org.opensaml.saml.saml2.core.EncryptedAssertion;
+import org.opensaml.saml.saml2.core.NameID;
+import org.opensaml.saml.saml2.core.Response;
+import org.opensaml.saml.saml2.core.Status;
+import org.opensaml.saml.saml2.core.StatusCode;
+import org.opensaml.saml.saml2.core.StatusMessage;
+import org.opensaml.saml.saml2.core.Subject;
+import org.opensaml.saml.saml2.core.SubjectConfirmation;
+import org.opensaml.saml.saml2.core.SubjectConfirmationData;
+import org.opensaml.saml.saml2.core.impl.AssertionBuilder;
+import org.opensaml.saml.saml2.core.impl.AttributeBuilder;
+import org.opensaml.saml.saml2.core.impl.AttributeStatementBuilder;
+import org.opensaml.saml.saml2.core.impl.AudienceBuilder;
+import org.opensaml.saml.saml2.core.impl.AudienceRestrictionBuilder;
+import org.opensaml.saml.saml2.core.impl.AuthnContextBuilder;
+import org.opensaml.saml.saml2.core.impl.AuthnContextClassRefBuilder;
+import org.opensaml.saml.saml2.core.impl.AuthnStatementBuilder;
+import org.opensaml.saml.saml2.core.impl.ConditionsBuilder;
+import org.opensaml.saml.saml2.core.impl.NameIDBuilder;
+import org.opensaml.saml.saml2.core.impl.StatusBuilder;
+import org.opensaml.saml.saml2.core.impl.StatusCodeBuilder;
+import org.opensaml.saml.saml2.core.impl.StatusMessageBuilder;
+import org.opensaml.saml.saml2.core.impl.SubjectBuilder;
+import org.opensaml.saml.saml2.core.impl.SubjectConfirmationBuilder;
+import org.opensaml.saml.saml2.core.impl.SubjectConfirmationDataBuilder;
+import org.opensaml.xmlsec.encryption.support.EncryptionConstants;
+import org.opensaml.core.xml.schema.XSString;
+import org.opensaml.core.xml.schema.impl.XSStringBuilder;
 import org.wso2.carbon.identity.base.IdentityException;
 import org.wso2.carbon.identity.core.model.SAMLSSOServiceProviderDO;
 import org.wso2.carbon.identity.sso.saml.SAMLSSOConstants;
@@ -88,7 +88,7 @@ public class SAMLResponseBuilder {
             log.debug("Building SAML Response for the consumer '" +
                     ssoIdPConfigs.getAssertionConsumerUrl() + "'");
         }
-        Response response = new org.opensaml.saml2.core.impl.ResponseBuilder().buildObject();
+        Response response = new org.opensaml.saml.saml2.core.impl.ResponseBuilder().buildObject();
         response.setIssuer(SAMLSSOUtil.getIssuer());
         response.setID(SAMLSSOUtil.createID());
         response.setDestination(ssoIdPConfigs.getAssertionConsumerUrl());
@@ -280,7 +280,7 @@ public class SAMLResponseBuilder {
                 // look
                 // https://wiki.shibboleth.net/confluence/display/OpenSAML/OSTwoUsrManJavaAnyTypes
                 XSStringBuilder stringBuilder =
-                        (XSStringBuilder) Configuration.getBuilderFactory()
+                        (XSStringBuilder) XMLObjectProviderRegistrySupport.getBuilderFactory()
                                 .getBuilder(XSString.TYPE_NAME);
                 XSString stringValue =
                         stringBuilder.buildObject(AttributeValue.DEFAULT_ELEMENT_NAME,

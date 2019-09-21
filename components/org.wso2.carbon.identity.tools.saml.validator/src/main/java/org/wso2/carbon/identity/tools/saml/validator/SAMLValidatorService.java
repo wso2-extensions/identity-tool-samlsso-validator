@@ -18,9 +18,9 @@ package org.wso2.carbon.identity.tools.saml.validator;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.opensaml.saml2.core.AuthnRequest;
-import org.opensaml.saml2.core.Response;
-import org.opensaml.xml.XMLObject;
+import org.opensaml.saml.saml2.core.AuthnRequest;
+import org.opensaml.saml.saml2.core.Response;
+import org.opensaml.core.xml.XMLObject;
 import org.wso2.carbon.identity.base.IdentityException;
 import org.wso2.carbon.identity.core.model.SAMLSSOServiceProviderDO;
 import org.wso2.carbon.identity.sso.saml.util.SAMLSSOUtil;
