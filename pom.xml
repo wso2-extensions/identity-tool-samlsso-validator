@@ -27,7 +27,7 @@
     <groupId>org.wso2.carbon.identity.tool.validator.sso.saml2</groupId>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>identity-tool-samlsso-validator</artifactId>
-    <version>5.3.6-SNAPSHOT</version>
+    <version>5.4.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>WSO2 Carbon - Saml SSO validator Aggregator Module</name>
     <description>
@@ -331,8 +331,8 @@
         <identity.carbon.auth.saml2.version>5.4.5</identity.carbon.auth.saml2.version>
 
         <!-- Carbon kernel version -->
-        <carbon.kernel.version>4.5.0</carbon.kernel.version>
-        <carbon.kernel.feature.version>4.5.0</carbon.kernel.feature.version>
+        <carbon.kernel.version>4.6.0</carbon.kernel.version>
+        <carbon.kernel.feature.version>4.6.0</carbon.kernel.feature.version>
         <carbon.kernel.package.import.version.range>[4.5.0, 5.0.0)</carbon.kernel.package.import.version.range>
         <carbon.kernel.registry.imp.pkg.version>[1.0.1, 2.0.0)</carbon.kernel.registry.imp.pkg.version>
 
