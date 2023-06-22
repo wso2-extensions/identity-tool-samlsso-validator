@@ -51,7 +51,7 @@ public class SAMLValidatorUtil {
         try {
             int tenantId = CarbonContext.getThreadLocalCarbonContext().getTenantId();
             SAMLSSOServiceProviderDO[] serviceProviderDOs =
-                    SAMLSSOServiceProviderManager.getInstance().getServiceProviders(tenantId);
+                    new SAMLSSOServiceProviderManager().getServiceProviders(tenantId);
             if (serviceProviderDOs != null && serviceProviderDOs.length > 0) {
                 List<String> issuers = new ArrayList<String>();
                 for (SAMLSSOServiceProviderDO providerDO : serviceProviderDOs) {

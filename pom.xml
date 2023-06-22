@@ -249,8 +249,8 @@
 
     <properties>
         <!--Carbon framework version-->
-        <identity.framework.version>5.15.62</identity.framework.version>
-        <carbon.identity.framework.import.version.range>[5.15.0, 7.0.0)</carbon.identity.framework.import.version.range>
+        <identity.framework.version>5.25.234</identity.framework.version>
+        <carbon.identity.framework.import.version.range>[5.25.234, 7.0.0)</carbon.identity.framework.import.version.range>
 
         <identity.tool.samlsso.validator.import.version.range>[5.3.0, 6.0.0)</identity.tool.samlsso.validator.import.version.range>
         <identity.tool.samlsso.validator.export.version>${project.version}</identity.tool.samlsso.validator.export.version>
