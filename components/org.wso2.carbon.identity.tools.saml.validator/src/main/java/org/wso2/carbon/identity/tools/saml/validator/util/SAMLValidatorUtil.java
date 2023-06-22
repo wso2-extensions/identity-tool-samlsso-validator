@@ -82,7 +82,7 @@ public class SAMLValidatorUtil {
             SAMLSSOServiceProviderDO ssoIdpConfigs = idPConfigManager.getServiceProvider(issuer);
             if (ssoIdpConfigs == null) {
                 int tenantId = CarbonContext.getThreadLocalCarbonContext().getTenantId();
-                ssoIdpConfigs = SAMLSSOServiceProviderManager.getInstance().getServiceProvider(issuer, tenantId);
+                ssoIdpConfigs = new SAMLSSOServiceProviderManager().getServiceProvider(issuer, tenantId);
             }
             return ssoIdpConfigs;
         } catch (Exception e) {
