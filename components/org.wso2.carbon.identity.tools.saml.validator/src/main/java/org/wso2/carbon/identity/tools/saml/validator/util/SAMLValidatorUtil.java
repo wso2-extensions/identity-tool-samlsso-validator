@@ -23,10 +23,10 @@ import org.wso2.carbon.CarbonException;
 import org.wso2.carbon.context.CarbonContext;
 import org.wso2.carbon.core.util.AnonymousSessionUtil;
 import org.wso2.carbon.identity.base.IdentityException;
-import org.wso2.carbon.identity.core.SAMLSSOServiceProviderManager;
 import org.wso2.carbon.identity.core.model.SAMLSSOServiceProviderDO;
 import org.wso2.carbon.identity.sso.saml.SSOServiceProviderConfigManager;
 import org.wso2.carbon.identity.sso.saml.util.SAMLSSOUtil;
+import org.wso2.carbon.identity.tools.saml.validator.internal.SAMLValidatorServiceComponentHolder;
 import org.wso2.carbon.user.core.UserRealm;
 import org.wso2.carbon.user.core.UserStoreException;
 import org.wso2.carbon.user.core.UserStoreManager;
@@ -50,8 +50,8 @@ public class SAMLValidatorUtil {
     public static String[] getIssuersOfSAMLServiceProviders() throws IdentityException {
         try {
             int tenantId = CarbonContext.getThreadLocalCarbonContext().getTenantId();
-            SAMLSSOServiceProviderDO[] serviceProviderDOs =
-                    new SAMLSSOServiceProviderManager().getServiceProviders(tenantId);
+            SAMLSSOServiceProviderDO[] serviceProviderDOs = SAMLValidatorServiceComponentHolder.getInstance()
+                    .getSAMLSSOServiceProviderManager().getServiceProviders(tenantId);
             if (serviceProviderDOs != null && serviceProviderDOs.length > 0) {
                 List<String> issuers = new ArrayList<String>();
                 for (SAMLSSOServiceProviderDO providerDO : serviceProviderDOs) {
@@ -82,7 +82,8 @@ public class SAMLValidatorUtil {
             SAMLSSOServiceProviderDO ssoIdpConfigs = idPConfigManager.getServiceProvider(issuer);
             if (ssoIdpConfigs == null) {
                 int tenantId = CarbonContext.getThreadLocalCarbonContext().getTenantId();
-                ssoIdpConfigs = new SAMLSSOServiceProviderManager().getServiceProvider(issuer, tenantId);
+                ssoIdpConfigs = SAMLValidatorServiceComponentHolder.getInstance().getSAMLSSOServiceProviderManager()
+                        .getServiceProvider(issuer, tenantId);
             }
             return ssoIdpConfigs;
         } catch (Exception e) {

@@ -129,6 +129,7 @@
                             version="${identity.inbound.auth.saml.import.version.range}",
                         </Import-Package>
                         <Export-Package>
+                            !org.wso2.carbon.identity.tools.saml.validator.internal,
                             org.wso2.carbon.identity.tools.saml.validator.*;
                             version="${identity.tool.samlsso.validator.export.version}"
                         </Export-Package>
