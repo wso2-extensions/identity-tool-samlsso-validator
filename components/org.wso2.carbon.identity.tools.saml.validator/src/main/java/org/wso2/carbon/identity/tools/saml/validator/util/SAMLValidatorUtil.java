@@ -1,8 +1,9 @@
 /*
- * Copyright 2005-2014 WSO2, Inc. (http://wso2.com)
- * 
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
+ * Copyright (2005-2023) WSO2, LLC. (http://wso2.com).
+ *
+ * WSO2 LLC. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
  * You may obtain a copy of the License at
  * 
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -23,10 +24,9 @@ import org.wso2.carbon.context.CarbonContext;
 import org.wso2.carbon.core.util.AnonymousSessionUtil;
 import org.wso2.carbon.identity.base.IdentityException;
 import org.wso2.carbon.identity.core.model.SAMLSSOServiceProviderDO;
-import org.wso2.carbon.identity.core.persistence.IdentityPersistenceManager;
 import org.wso2.carbon.identity.sso.saml.SSOServiceProviderConfigManager;
 import org.wso2.carbon.identity.sso.saml.util.SAMLSSOUtil;
-import org.wso2.carbon.registry.core.session.UserRegistry;
+import org.wso2.carbon.identity.tools.saml.validator.internal.SAMLValidatorServiceComponentHolder;
 import org.wso2.carbon.user.core.UserRealm;
 import org.wso2.carbon.user.core.UserStoreException;
 import org.wso2.carbon.user.core.UserStoreManager;
@@ -49,14 +49,9 @@ public class SAMLValidatorUtil {
      */
     public static String[] getIssuersOfSAMLServiceProviders() throws IdentityException {
         try {
-            IdentityPersistenceManager persistenceManager =
-                    IdentityPersistenceManager.getPersistanceManager();
             int tenantId = CarbonContext.getThreadLocalCarbonContext().getTenantId();
-            UserRegistry registry =
-                    SAMLSSOUtil.getRegistryService()
-                            .getConfigSystemRegistry(tenantId);
-            SAMLSSOServiceProviderDO[] serviceProviderDOs =
-                    persistenceManager.getServiceProviders(registry);
+            SAMLSSOServiceProviderDO[] serviceProviderDOs = SAMLValidatorServiceComponentHolder.getInstance()
+                    .getSAMLSSOServiceProviderManager().getServiceProviders(tenantId);
             if (serviceProviderDOs != null && serviceProviderDOs.length > 0) {
                 List<String> issuers = new ArrayList<String>();
                 for (SAMLSSOServiceProviderDO providerDO : serviceProviderDOs) {
@@ -86,13 +81,9 @@ public class SAMLValidatorUtil {
                     SSOServiceProviderConfigManager.getInstance();
             SAMLSSOServiceProviderDO ssoIdpConfigs = idPConfigManager.getServiceProvider(issuer);
             if (ssoIdpConfigs == null) {
-                IdentityPersistenceManager persistenceManager =
-                        IdentityPersistenceManager.getPersistanceManager();
                 int tenantId = CarbonContext.getThreadLocalCarbonContext().getTenantId();
-                UserRegistry registry =
-                        SAMLSSOUtil.getRegistryService()
-                                .getConfigSystemRegistry(tenantId);
-                ssoIdpConfigs = persistenceManager.getServiceProvider(registry, issuer);
+                ssoIdpConfigs = SAMLValidatorServiceComponentHolder.getInstance().getSAMLSSOServiceProviderManager()
+                        .getServiceProvider(issuer, tenantId);
             }
             return ssoIdpConfigs;
         } catch (Exception e) {
