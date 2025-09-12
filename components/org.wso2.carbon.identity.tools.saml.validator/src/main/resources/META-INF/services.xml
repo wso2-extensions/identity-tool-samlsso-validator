@@ -20,6 +20,20 @@
 		<parameter name="ServiceClass">org.wso2.carbon.identity.tools.saml.validator.SAMLValidatorService
 		</parameter>
 		<parameter name="DoAuthentication" locked="true">false</parameter>
+
+        <operation name="buildResponse">
+            <parameter name="AuthorizationAction" locked="true">/permission/admin/manage/identity/usermgt/update
+            </parameter>
+        </operation>
+        <operation name="validateAuthnRequest">
+            <parameter name="AuthorizationAction" locked="true">/permission/admin/manage/identity/usermgt/update
+            </parameter>
+        </operation>
+        <operation name="getIssuersOfSAMLServiceProviders">
+            <parameter name="AuthorizationAction" locked="true">/permission/admin/manage/identity/applicationmgt/view
+            </parameter>
+        </operation>
+
 	</service>
 	<parameter name="hiddenService" locked="true">true</parameter>
 </serviceGroup>
